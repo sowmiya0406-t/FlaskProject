@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard">
+    <h1 class="dashboard-title">Welcome to WareHouse Inventory</h1>
+    <div class="card-container">
+        <a href="{{ url_for('routes.home') }}" class="card">
+            <img src="{{ url_for('static', filename='images/product.png') }}" alt="Products">
+            <h2>Products</h2>
+        </a>
+        <a href="{{ url_for('routes.locations') }}" class="card">
+            <img src="{{ url_for('static', filename='images/location.png') }}" alt="Locations">
+            <h2>Locations</h2>
+        </a>
+        <a href="{{ url_for('routes.movements') }}" class="card">
+            <img src="{{ url_for('static', filename='images/movement.png') }}" alt="Movements">
+            <h2>Movements</h2>
+        </a>
+    </div>
+</div>
+{% endblock %}

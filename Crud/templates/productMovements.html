@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>🔄 Report </h1>
+
+    <div class="action-bar">
+        <a href="{{ url_for('routes.create_movement') }}" class="btn-primary">+ Create Movement</a>
+    </div>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Quantity</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in movements %}
+            <tr>
+                <td>{{ m.product.name }}</td>
+                <td>{{ m.from_location.name }}</td>
+                <td>{{ m.to_location.name }}</td>
+                <td>{{ m.quantity }}</td>
+                <td>{{ m.timestamp }}</td>
+                <td>
+                    <form action="{{ url_for('routes.delete_movement', id=m.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this movement?')" class="btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
